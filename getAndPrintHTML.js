@@ -8,15 +8,15 @@ function getAndPrintHTML () {
 
   https.get(requestOptions, function (response) {
     response.setEncoding('utf8');
+    var buffer = '';
     response.on('data', function (data) {
-      var buffer = '';
       if (data) {
         buffer += data;
       };
-      console.log(buffer + '\n');
     });
     response.on('end', function() {
       console.log('Response stream complete.');
+      console.log(buffer + '\n');
     });
   });
 }
